@@ -39,6 +39,9 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        
+        // プロパティの値を書き換えて、ユーザー登録後のリダイレクト先を変更しています。
+    $this->redirectTo = route('user.index');
     }
 
     /**
@@ -49,11 +52,11 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        
+        // バリデーションルールとエラーメッセージは、
+        // UserControllerと共用したいので、Userモデルに移動しています。
+        return Validator::make($data, User::$rules, User::$messages, );
+        
     }
 
     /**
@@ -64,10 +67,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        //return User::create([
+            //'name' => $data['name'],
+            //'email' => $data['email'],
+            //'password' => Hash::make($data['password']),
+        //]);
+        
+        // 元はUser::create()メソッドを使って登録されていたのを、
+        // fill()メソッドとsave()メソッドを使って登録しています。
+        $user = new User();
+        $user->fill($data);
+        // パスワードはハッシュ化しないといけないので、値を上書きしています。
+        $user->password = Hash::make($data['password']);
+        $user->save();
+        return $user;
     }
 }
