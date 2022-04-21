@@ -21,8 +21,16 @@ Route::put('/posts/{post}', 'PostController@update');
 
 //投稿確認ページ
 
+// Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
+
+// Route::resource('user', 'UserController')->only(['index', 'edit', 'update'])->middleware('auth');
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// 必要なルーティングのみに限定する
 Route::resource('user', 'UserController')->only(['index', 'edit', 'update'])->middleware('auth');

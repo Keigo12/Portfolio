@@ -67,19 +67,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        //return User::create([
-            //'name' => $data['name'],
-            //'email' => $data['email'],
-            //'password' => Hash::make($data['password']),
-        //]);
-        
-        // 元はUser::create()メソッドを使って登録されていたのを、
-        // fill()メソッドとsave()メソッドを使って登録しています。
-        $user = new User();
-        $user->fill($data);
-        // パスワードはハッシュ化しないといけないので、値を上書きしています。
-        $user->password = Hash::make($data['password']);
-        $user->save();
-        return $user;
+    // 元はUser::create()メソッドを使って登録されていたのを、
+    // fill()メソッドとsave()メソッドを使って登録しています。
+    $user = new User();
+    $user->fill($data);
+    // パスワードはハッシュ化しないといけないので、値を上書きしています。
+    $user->password = Hash::make($data['password']);
+    $user->save();
+    return $user;
     }
 }

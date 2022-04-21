@@ -24,19 +24,19 @@
                     <div class='infomation'>
                         <p class='period'>締切日{{ $post->period}}</p>
                         <p class='sex'>性別:{{ $post->sex->sex }}</p>
-                        <p class='age'>{{ $post->age }}</p>
+                        <p class='age'>年齢:{{ $post->age }}</p>
                         <p class='breed'>犬種:{{ $post->breed->breed }}</p>
                         <p class='area'>地域:{{ $post->area->area }}</p>
                         <p class='size'>サイズ:{{ $post->size->size }}</p>
-                        <p>去勢：
-                        @if ($post['fix'] === 0)
+                        <p>ワクチン：
+                        @if ($post['vaccine'] === 0)
 	                    未                    
                         @else
                         済
                         @endif
                         </p>
-                        <p>ワクチン：
-                        @if ($post['vaccine'] === 0)
+                        <p>去勢：
+                        @if ($post['fix'] === 0)
 	                    未                    
                         @else
                         済

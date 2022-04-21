@@ -20,7 +20,9 @@
                     <p class='sex'>性別:{{ $sex->sex }}</p>
                     <a class='area'>地域:{{ $area->area }}</p>
                     <a class='job'>職業:{{ $job->job }}</p>
-           
+        
+        <div class="update">
+            <a href="/">確定</a>
         </div>
         
     </body>

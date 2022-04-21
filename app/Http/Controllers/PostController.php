@@ -65,12 +65,31 @@ class PostController extends Controller
       return view('posts/edit')->with(['post' => $post])->with(['sexes' => $sex->get()])->with(['breeds' => $breed->get()])->with(['areas' => $area->get()])->with(['sizes' => $size->get()]);
     }
     
-    public function update(Request $request, Post $post)
-{
-    $input = $request['post'];
-    $post->fill($input)->save();
-
-    return redirect('/posts/' . $post->id);
-}
+    public function update(Post $post, PostRequest $request)
+    {
+      $count_array = count($request['post']);
+      $old_image_path = ($post->image_path);
+      $post = new Post;
+      $input = $request['post'];
+      $post->fill($input);
+      $post->user_id = Auth::id();
+      
+      if($count_array === 13){
+      // アップロードした画像のフルパスを取得
+        $post->image_path = $old_image_path;
+      }else{
+        $image = $request->file('post.image_path');
+      
+      // バケットの`myprefix`フォルダへアップロード
+        $path = Storage::disk('s3')->putFile('test', $image, 'public');
+      
+      // アップロードした画像のフルパスを取得
+        $post->image_path = Storage::disk('s3')->url($path);
+      
+      }
+      $post->save();
+      
+      return redirect('/posts/' . $post->id);
+    }
   
 }    

@@ -45,7 +45,7 @@ class UserRequest extends FormRequest
             array_push($rules['email'], Rule::unique('users')->ignore(Auth::user()));
         }
         return $rules;
-}
+    }
 
     
     

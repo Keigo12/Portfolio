@@ -39,9 +39,14 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         
-                        <li class='create'>
+                        <div class='create'>
                             <a href='/posts/create'>里親を募集</a>
-                        </li>
+                        </div>
+                        
+                        <div class="index">
+                            <a href="/">/犬を探す</a>
+                        </div>
+                        
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">

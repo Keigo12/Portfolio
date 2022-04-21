@@ -34,7 +34,7 @@
             </div>
             <div class="infomation">
                 <div class="sex">
-                    <h3>性別</h3>
+                    <label for="sex">性別</label>
                     <select name="post[sex_id]">
                         <option value="">選択してください</option>
                         @foreach($sexes as $sex)
@@ -44,7 +44,7 @@
                     <p class="sex_id__error" style="color:red">{{ $errors->first('post.sex_id') }}</p>
                 </div>
                 <div class="breed">
-                    <h3>犬種</h3>
+                    <label for="breed">犬種</label>
                     <select name="post[breed_id]">
                         <option value="">選択してください</option>    
                         @foreach($breeds as $breed)
@@ -54,7 +54,7 @@
                     <p class="breed_id__error" style="color:red">{{ $errors->first('post.breed_id') }}</p>
                 </div>
                 <div class="area">
-                    <h3>地域</h3>
+                    <label for="area">地域</label>
                     <select name="post[area_id]">
                         <option value="">選択してください</option>   
                         @foreach($areas as $area)
@@ -64,7 +64,7 @@
                     <p class="area_id__error" style="color:red">{{ $errors->first('post.area_id') }}</p>
                 </div>
                 <div class="size">
-                    <h3>サイズ</h3>
+                    <label for="size">サイズ</label>
                     <select name="post[size_id]">
                         <option value="">選択してください</option>    
                         @foreach($sizes as $size)

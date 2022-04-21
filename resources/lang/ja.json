@@ -1,6 +1,8 @@
 {
     "Login": "ログイン",
     "Register": "会員登録",
+    "Modify": "会員情報修正",
+    "Logout": "ログアウト",
     "Name": "お名前",
     "E-Mail Address": "E-mailアドレス",
     "Password": "パスワード",

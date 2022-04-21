@@ -57,7 +57,7 @@
                             <label for="birthday" class="col-md-4 col-form-label text-md-right">{{ __('生年月日') }}</label>
 
                             <div class="col-md-6">
-                                <input id="birthdayr" type="date" class="form-control @error('birthday') is-invalid @enderror" name="birthday" value="{{ old('birthdayr') }}"  placeholder="2022/01/01">
+                                <input id="birthdayr" type="date" class="form-control @error('birthday') is-invalid @enderror" name="birthday" value="{{ old('birthday') }}"  placeholder="2022/01/01">
 
                                 @error('birthday')
                                     <span class="invalid-feedback" role="alert">
@@ -73,9 +73,9 @@
                             <div class="col-md-6">
                                 <select name="sex_id" id="sex_id" class="form-control @error('sex_id') is-invalid @enderror">
                                     <option value="">-- 選択してください --</option>
-                                    <option value="1">男性</option>
-                                    <option value="2">女性</option>
-                                    <option value="3">その他</option>
+                                    <option value="1" @if(1 === (int)old('sex_id')) selected @endif>男性</option>
+                                    <option value="2"@if(2 === (int)old('sex_id')) selected @endif>女性</option>
+                                    <option value="3"@if(3 === (int)old('sex_id')) selected @endif>その他</option>
                                 </select>
 
                                 @error('sex_id')

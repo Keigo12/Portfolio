@@ -87,4 +87,8 @@ class User extends Authenticatable
         6 =>'専業主婦', 7 =>'パート・アルバイト', 8 =>'学生', 9 =>'その他',
     ];
     
+    public static $sex =[
+        1 => '男性', 2 =>'女性', 3 =>'その他'
+        ];
+    
 }
