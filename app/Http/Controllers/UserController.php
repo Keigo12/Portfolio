@@ -3,12 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Http\Requests\UserRequest;
+use App\Area;
+use App\Job;
+use App\Sex;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(User $user)
     {
-    return view('user.index');
+        $auth_user=\Auth::user();
+        $area_name=Area::find($auth_user->area_id);
+        $job_name=Job::find($auth_user->job_id);
+        $sex_name=Sex::find($auth_user->sex_id);
+        
+    return view('user.index')->with(['user' => $auth_user,"area" => $area_name])->with(['user' => $auth_user,"job" => $job_name])->with(['user' => $auth_user,"sex" => $sex_name]);
     }
     
     public function edit($id)
@@ -16,19 +26,10 @@ class UserController extends Controller
     return view('user.edit');
     }
     
-    public function update(UserRequest $request, User $user)
-{
-    $user->fill($request->all());
-
-    // パスワードの項目があるとき（つまり、パスワードを変更するとき）
-    if (!is_null($request->password)) {
-        // パスワードの値をハッシュ化して上書きする。
-        $user->password = Hash::make($request->password);
-    } else {
-        // パスワードの項目に値がないときは、アップデートの対象にしない。
-        unset($user->password);
-    }
+    public function update(Request $request, User $user)
+    {
+    $user->fill($request["user"]);
     $user->save();
     return redirect(route('user.index'));
-}
+    }
 }
