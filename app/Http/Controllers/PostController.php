@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\PostRequest; 
+use App\Http\Requests\UpdateRequest;
 use App\Sex;
 use App\Breed;
 use App\Area;
@@ -65,7 +66,7 @@ class PostController extends Controller
       return view('posts/edit')->with(['post' => $post])->with(['sexes' => $sex->get()])->with(['breeds' => $breed->get()])->with(['areas' => $area->get()])->with(['sizes' => $size->get()]);
     }
     
-    public function update(Post $post, PostRequest $request)
+    public function update(Post $post, UpdateRequest $request)
     {
       $count_array = count($request['post']);
       $old_image_path = ($post->image_path);
@@ -89,7 +90,7 @@ class PostController extends Controller
       }
       $post->save();
       
-      return redirect('/posts/' . $post->id);
+      return redirect('/mypage/' . $post->id);
     }
   
 }    
