@@ -18,7 +18,9 @@ Route::post('/posts', 'PostController@store');
 Route::get('/posts/{post}', 'PostController@show');
 Route::get('/posts/{post}/edit', 'PostController@edit');
 Route::put('/posts/{post}', 'PostController@update');
+ Route::get('/mypage/mypage', 'MypageController@mypage');
 
+Route::resource('/mypage', 'MypageController')->only(['index'])->middleware('auth');
 //投稿確認ページ
 
 // Auth::routes();

@@ -91,4 +91,8 @@ class User extends Authenticatable
         1 => '男性', 2 =>'女性', 3 =>'その他'
         ];
     
+    // public function getPaginateByLimit (int $limit_count = 5)
+    // {
+    //  return $this->posts()->with('user')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    // }
 }
