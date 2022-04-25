@@ -4,11 +4,17 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <title>Blog</title>
+        <title>マイページ</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
+        <p class="edit">[<a href="/posts/{{ $post->id }}/edit">編集</a>]</p>
+        <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post" style="display:inline">
+            @csrf
+            @method('DELETE')
+            <button type="submit">delete</button> 
+        </form>
         <h1>投稿詳細画面</h1>
                 <div class='post'>
                     <p class='id'>募集番号:{{ $post->id }}</p>
@@ -56,7 +62,7 @@
                     </div>
                 </div>
                 <div class="footer">
-                    <a href="/">戻る</a>
+                    <a href="{{ route('mypage.index')}}">戻る</a>
                 </div>
     </body>
 </html>

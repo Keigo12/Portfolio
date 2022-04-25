@@ -18,7 +18,7 @@
                     
 	                        
 	                    <h2 class='name'>
-                            <a href="/posts/{{ $post->id }}">{{ $post->name }}</a>
+                            <a href="/mypage/{{ $post->id }}">{{ $post->name }}</a>
                         </h2>
                     </div>
                     <div class='infomation'>

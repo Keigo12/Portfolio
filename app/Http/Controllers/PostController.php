@@ -70,11 +70,11 @@ class PostController extends Controller
     {
       $count_array = count($request['post']);
       $old_image_path = ($post->image_path);
-      $post = new Post;
+      //$post = new Post;
       $input = $request['post'];
       $post->fill($input);
       $post->user_id = Auth::id();
-      
+  
       if($count_array === 13){
       // アップロードした画像のフルパスを取得
         $post->image_path = $old_image_path;
@@ -92,5 +92,11 @@ class PostController extends Controller
       
       return redirect('/mypage/' . $post->id);
     }
+    
+    public function delete(Post $post)
+    {
+    $post->delete();
+    return redirect('/mypage');
+   }
   
 }    

@@ -8,7 +8,7 @@ use App\Post;
 
 class MypageController extends Controller
 {
-   public function index(User $user)
+   public function index()
     {
     $posts = \Auth::user()->posts;
     return view('mypage.index')->with(['posts' => $posts]);//->with(['posts' => $user->getPaginateByLimit()]);
@@ -19,4 +19,10 @@ class MypageController extends Controller
     {
     return view('mypage.mypage')->with(['user' => $user])->with(['post' => $post]);
     } 
+    
+    public function show(Post $post)
+    {
+    return view('mypage/show')->with(['post' => $post]);
+    }
+    
 }

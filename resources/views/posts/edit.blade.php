@@ -110,7 +110,7 @@
             </div>
             <input type="submit" value="更新"/>
         </form>
-        <div class="back">[<a href="/posts/{{ $post->id }}">戻る</a>]</div>
+        <div class="back">[<a href="/mypage/{{ $post->id }}">戻る</a>]</div>
     </body>
 </html>
 @endsection
