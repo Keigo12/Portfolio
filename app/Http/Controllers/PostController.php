@@ -32,7 +32,6 @@ class PostController extends Controller
     
     public function create(Post $post, Sex $sex, Breed $breed, Area $area, Size $size, Request $request)
     {
-      
       return view('posts/create')->with(['sexes' => $sex->get()])->with(['breeds' => $breed->get()])->with(['areas' => $area->get()])->with(['sizes' => $size->get()])->with(['post' => $post->get()]);
       
     }
@@ -68,27 +67,48 @@ class PostController extends Controller
     
     public function update(Post $post, UpdateRequest $request)
     {
-      $count_array = count($request['post']);
       $old_image_path = ($post->image_path);
       //$post = new Post;
       $input = $request['post'];
       $post->fill($input);
       $post->user_id = Auth::id();
   
-      if($count_array === 13){
-      // アップロードした画像のフルパスを取得
-        $post->image_path = $old_image_path;
+      $check = array_key_exists("image_path", $input);
+      $check_vaccine = array_key_exists("vaccine", $input);
+      $check_fix = array_key_exists("fix", $input);
+      $old_vaccine = ($post->vaccine);
+      $old_fix = ($post->fix);
+      
+      if($old_vaccine === $check_vaccine){
+      $post->vaccine = $old_vaccine;
       }else{
-        $image = $request->file('post.image_path');
+      $post->vaccine = $check_vaccine;
+      }
+      
+      if($old_fix === $check_fix){
+      $post->fix = $old_fix;
+      }else{
+      $post->fix = $check_fix;
+      }
+      
+      if($check === true){
+     
+      $image = $request->file('post.image_path');
       
       // バケットの`myprefix`フォルダへアップロード
-        $path = Storage::disk('s3')->putFile('test', $image, 'public');
+      $path = Storage::disk('s3')->putFile('test', $image, 'public');
       
       // アップロードした画像のフルパスを取得
-        $post->image_path = Storage::disk('s3')->url($path);
+      $post->image_path = Storage::disk('s3')->url($path);
+        
+      }else{
+        
+      $post->image_path = $old_image_path;
       
       }
       $post->save();
+      
+      
       
       return redirect('/mypage/' . $post->id);
     }

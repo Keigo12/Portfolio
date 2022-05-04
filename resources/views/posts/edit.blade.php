@@ -29,7 +29,7 @@
             <div class="infomation">
                 <div>
                     <label for="vaccine">ワクチン接種済み</label>
-                    <input type="checkbox" name="post[vaccine]" value="1"{{ old('post.vaccine',$post->vaccine) == '1' ? 'checked' : '' }}>
+                    <input type="checkbox" name="post[vaccine]" value="1" {{ old('post.vaccine',$post->vaccine) == '1' ? 'checked' : '' }}>
                 </div>
                  <div>
                     <label for="fix">去勢済み</label>

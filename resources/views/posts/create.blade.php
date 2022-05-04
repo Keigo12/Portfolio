@@ -26,8 +26,6 @@
                 <input type="checkbox" name="post[vaccine]"  value="1" {{ old('post.vaccine') == '1' ? 'checked' : '' }}/>
             </div>
             
-            
-            
             <div>
                 <label for="fix">去勢済み</label>
                 <input type="checkbox" name="post[fix]" value="1" {{ old('post.fix') == '1' ? 'checked' : '' }}> 

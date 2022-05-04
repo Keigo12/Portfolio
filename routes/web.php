@@ -22,6 +22,10 @@ Route::delete('/posts/{post}', 'PostController@delete');
 Route::get('/mypage/mypage', 'MypageController@mypage');
 Route::resource('/mypage', 'MypageController')->only(['index'])->middleware('auth');
 Route::get('/mypage/{post}', 'MypageController@show');
+//メール送信
+Route::get('/mail/index/{post_user_id}', 'MailController@index')->middleware('auth');
+Route::get('/mail/entry_mail/{post_user_id}', 'MailController@entry')->middleware('auth');
+Route::get('/mail/entry_complete', 'MailController@complete');
 //投稿確認ページ
 
 // Auth::routes();
