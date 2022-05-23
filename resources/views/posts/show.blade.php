@@ -53,7 +53,7 @@
                     <div class='user'>
                         <p class='user_name'>ユーザー名　{{ $post->user->name}}</p>
                         <p class='user_id'>ユーザーID　{{ $post->user->id}}</p>
-                        <p>email {{$post->user->email}}</p>
+                        <p class='email' hidden > {{$post->user->email}}</p>
                     </div>
                     <div class="entry">
                     <a href="/mail/index/{{ $post->user->id }}">応募する</a>

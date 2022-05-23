@@ -10,7 +10,9 @@
     </head>
     <body>
       <a>応募が完了しました。</a>
-      
+      <div class="footer">
+            <a href="/">戻る</a>
+        </div>
     </body>
 </html>
 @endsection

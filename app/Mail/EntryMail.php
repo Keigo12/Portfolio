@@ -28,8 +28,8 @@ class EntryMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.entry_mail')
-                ->from('t8827277@gmail.com')
-                ->subject('This is a test mail');
+        // return $this->view('mail.entry_mail')
+        //         ->from('t8827277@gmail.com')
+        //         ->subject('This is a test mail');
     }
 }

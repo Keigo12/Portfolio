@@ -7,7 +7,7 @@ use App\User;
 use App\Area;
 use App\Job;
 use App\Sex;
-use App\Mail\EntryMail;
+//use App\Mail\EntryMail;
 use Illuminate\Support\Facades\Mail;
 
 class MailController extends Controller
@@ -25,15 +25,17 @@ class MailController extends Controller
         // 送信ボタン押下時に呼ばれる
     public function entry($id)
     {
-        //dd(User::find($id));
+       // dd(User::find($id));
         
-       $auth_user=[\Auth::user()];
-       $user_email = User::find($id);
-
-        Mail::send('mail.entry_mail', $auth_user, function($message){
+      $auth_user=[\Auth::user()];
+      
+        
+        Mail::send('mail.entry_mail', $auth_user,  function($message){
             $message->to('t8827277@gmail.com')
     	    ->subject('This is a test mail');
         });
+        
+        //Mail::to($id->name())->send(new Mail($auth_user));
       
         return view('mail.entry_complete');
     }

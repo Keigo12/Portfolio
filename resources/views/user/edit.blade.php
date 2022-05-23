@@ -12,7 +12,7 @@
                         @csrf
                         @method('PUT')
                         <div class="form-group row">
-                            <label for="name" >{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" name="user[name]" value="{{ old('user[name]', Auth::user()->name) }}">

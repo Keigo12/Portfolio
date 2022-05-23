@@ -39,13 +39,13 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                     
-                        <div class='create'>
-                            <a href='/posts/create'>里親を募集</a>
-                        </div>
+                        <li class="create">
+                            <a class="nav-link" href='/posts/create'>里親を募集</a>
+                        </li>
                         
-                        <div class="index">
-                            <a href="/">/犬を探す</a>
-                        </div>
+                        <li class="search">
+                            <a class="nav-link" href="/">犬を探す</a>
+                        </li>
                         
                         <!-- Authentication Links -->
                         @guest
@@ -65,7 +65,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     
-                                    <a href='/mypage/mypage'>マイページ</a>
+                                    <a href='/mypage/mypage' class="dropdown-item">マイページ</a>
                                     <a href="{{ route('user.edit', Auth::user()) }}" class="dropdown-item">{{ __('Modify') }}</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

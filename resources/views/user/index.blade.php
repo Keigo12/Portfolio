@@ -18,8 +18,8 @@
                     <p class='email'>メールアドレス:{{ $user->email }}</p>
                     <p class='birthday'>生年月日:{{ $user->birthday }}</p>
                     <p class='sex'>性別:{{ $sex->sex }}</p>
-                    <a class='area'>地域:{{ $area->area }}</p>
-                    <a class='job'>職業:{{ $job->job }}</p>
+                    <p class='area'>地域:{{ $area->area }}</p>
+                    <p class='job'>職業:{{ $job->job }}</p>
         
         <div class="update">
             <a href="/">確定</a>
