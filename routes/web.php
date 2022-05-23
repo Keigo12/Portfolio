@@ -14,11 +14,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'PostController@index');
 Route::get('/posts/create', 'PostController@create')->middleware('auth');
-Route::post('/posts', 'PostController@store');
+Route::post('/posts', 'PostController@store')->middleware('auth');
 Route::get('/posts/{post}', 'PostController@show');
 Route::get('/posts/{post}/edit', 'PostController@edit');
-Route::put('/posts/{post}', 'PostController@update');
-Route::delete('/posts/{post}', 'PostController@delete');
+Route::put('/posts/{post}', 'PostController@update')->middleware('auth');
+Route::delete('/posts/{post}', 'PostController@delete')->middleware('auth');
 Route::get('/mypage/mypage', 'MypageController@mypage');
 Route::resource('/mypage', 'MypageController')->only(['index'])->middleware('auth');
 Route::get('/mypage/{post}', 'MypageController@show');
